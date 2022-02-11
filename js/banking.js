@@ -19,12 +19,26 @@ function updateTotalField(inputForTransInNumber, fieldId) {
     lastTotalTransInNumber + inputForTransInNumber;
 }
 
+// FUNCTION TO UPDATE THE MAIN BALANCE
+
+function updateTheMainBalance(inputForDepositInNumber, isadd) {
+  var totalBalance = document.getElementById("totalBalance").innerText;
+  var totalBalanceInNumber = parseFloat(totalBalance);
+  // UPDATING THE NEW TOTAL VALUE
+  if (isadd == "add") {
+    document.getElementById("totalBalance").innerText =
+      totalBalanceInNumber + inputForDepositInNumber;
+  } else {
+    document.getElementById("totalBalance").innerText =
+      totalBalanceInNumber - inputForDepositInNumber;
+  }
+}
+
 // EVENT LISTENER FOR DEPOSIT BUTTON
 document.getElementById("depositButton").addEventListener("click", function () {
   // GETTING THE INPUT FOR DEPO
   // var inputForDeposit = document.getElementById("depositInput").value;
-  // var inputForDepositInNumber = parseFloat(inputForDeposit);
-  var inputForDepositInNumber = getInputValue("depositInput");
+
   // GETTING THE LAST DEPO VALUE AND UPDATE IT
   //   var lastDipoTotal = document.getElementById("depositTotal").innerText;
   //   var lastDipoTotalInNumber = parseFloat(lastDipoTotal);
@@ -32,14 +46,22 @@ document.getElementById("depositButton").addEventListener("click", function () {
   //   // SETTING THE NEW TOTAL DEPO VALUE
   //   document.getElementById("depositTotal").innerText =
   //     inputForDepositInNumber + lastDipoTotalInNumber;
-  updateTotalField(inputForDepositInNumber, "depositTotal");
 
   // GETTING THE LAST TOTAL BALANCE VALUE
-  var totalBalance = document.getElementById("totalBalance").innerText;
-  var totalBalanceInNumber = parseFloat(totalBalance);
-  // UPDATING THE NEW TOTAL VALUE
-  document.getElementById("totalBalance").innerText =
-    totalBalanceInNumber + inputForDepositInNumber;
+  //   var totalBalance = document.getElementById("totalBalance").innerText;
+  //   var totalBalanceInNumber = parseFloat(totalBalance);
+  //   // UPDATING THE NEW TOTAL VALUE
+  //   document.getElementById("totalBalance").innerText =
+  //     totalBalanceInNumber + inputForDepositInNumber;
+  // var inputForDepositInNumber = parseFloat(inputForDeposit);
+  var inputForDepositInNumber = getInputValue("depositInput");
+  if (
+    typeof inputForDepositInNumber == "number" &&
+    inputForDepositInNumber > 0
+  ) {
+    updateTotalField(inputForDepositInNumber, "depositTotal");
+    updateTheMainBalance(inputForDepositInNumber, "add");
+  }
 
   //     // CLEAR THE INPUT FIELD
   //   document.getElementById("depositInput").value = "";
@@ -50,7 +72,7 @@ document.getElementById("widrawButton").addEventListener("click", function () {
   // GETTING THE INPUT FOR WID
   //   var inputForWidraw = document.getElementById("widrawInput").value;
   //   var inputForWidrawInNumber = parseFloat(inputForWidraw);
-  var inputForWidrawInNumber = getInputValue("widrawInput");
+
   // GETTING THE LAST WID VALUE AND UPDATE IT
   //   var lastWidTotal = document.getElementById("totalWidraw").innerText;
   //   var lastWidTotalInNumber = parseFloat(lastWidTotal);
@@ -58,15 +80,16 @@ document.getElementById("widrawButton").addEventListener("click", function () {
   //   // SETTING THE NEW TOTAL WID VALUE
   //   document.getElementById("totalWidraw").innerText =
   //     inputForWidrawInNumber + lastWidTotalInNumber;
-  updateTotalField(inputForWidrawInNumber, "totalWidraw");
 
   // GETTING THE LAST TOTAL BALANCE VALUE
-  var totalBalance = document.getElementById("totalBalance").innerText;
-  var totalBalanceInNumber = parseFloat(totalBalance);
+  // var totalBalance = document.getElementById("totalBalance").innerText;
+  // var totalBalanceInNumber = parseFloat(totalBalance);
 
-  // SETTING THE NEW TOTAL VALUE
-  document.getElementById("totalBalance").innerText =
-    totalBalanceInNumber - inputForWidrawInNumber;
-
-  document.getElementById("widrawInput").value = "";
+  // // SETTING THE NEW TOTAL VALUE
+  // document.getElementById("totalBalance").innerText =
+  //   totalBalanceInNumber - inputForWidrawInNumber;
+  var inputForWidrawInNumber = getInputValue("widrawInput");
+  if (typeof inputForWidrawInNumber == "number" && inputForWidrawInNumber > 0)
+    updateTotalField(inputForWidrawInNumber, "totalWidraw");
+  updateTheMainBalance(inputForWidrawInNumber, "minus");
 });
