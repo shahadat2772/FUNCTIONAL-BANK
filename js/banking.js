@@ -15,6 +15,13 @@ function getTolatTransAmount(id) {
   return totalDipolInNumber;
 }
 
+// FUNCTION TO GET THE LAST TOTAL BALANCE
+function getThelastTotalBalanceAmount(id) {
+  var totalBalance = document.getElementById(id).innerText;
+  var totalBalanceInNumber = parseFloat(totalBalance);
+  return totalBalanceInNumber;
+}
+
 // EVENT LISTENER FOR DEPOSIT BUTTON
 document.getElementById("depositButton").addEventListener("click", function () {
   // GETTING THE INPUT FOR DEPO
@@ -24,14 +31,15 @@ document.getElementById("depositButton").addEventListener("click", function () {
   // GETTING THE LAST DEPO VALUE
   //   var lastDipoTotal = document.getElementById("depositTotal").innerText;
   //   var lastDipoTotalInNumber = parseFloat(lastDipoTotal);
-  var lastDipoTotalInNumber = getTolatDepoAmount("depositTotal");
+  var lastDipoTotalInNumber = getTolatTransAmount("depositTotal");
 
   // SETTING THE NEW TOTAL DEPO VALUE
   document.getElementById("depositTotal").innerText =
     inputForDepositInNumber + lastDipoTotalInNumber;
   // GETTING THE LAST TOTAL BALANCE VALUE
-  var totalBalance = document.getElementById("totalBalance").innerText;
-  var totalBalanceInNumber = parseFloat(totalBalance);
+  //   var totalBalance = document.getElementById("totalBalance").innerText;
+  //   var totalBalanceInNumber = parseFloat(totalBalance);
+  var totalBalanceInNumber = getThelastTotalBalanceAmount("totalBalance");
   // SETTING THE NEW TOTAL VALUE
   document.getElementById("totalBalance").innerText =
     totalBalanceInNumber + inputForDepositInNumber;
@@ -55,8 +63,9 @@ document.getElementById("widrawButton").addEventListener("click", function () {
     inputForWidrawInNumber + lastWidTotalInNumber;
 
   // GETTING THE LAST TOTAL BALANCE VALUE
-  var totalBalance = document.getElementById("totalBalance").innerText;
-  var totalBalanceInNumber = parseFloat(totalBalance);
+  //   var totalBalance = document.getElementById("totalBalance").innerText;
+  //   var totalBalanceInNumber = parseFloat(totalBalance);
+  var totalBalanceInNumber = getThelastTotalBalanceAmount("totalBalance");
   // SETTING THE NEW TOTAL VALUE
   document.getElementById("totalBalance").innerText =
     totalBalanceInNumber - inputForWidrawInNumber;
