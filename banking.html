@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>BAPER BANK</title>
+  </head>
+  <body class="bg-gray-300">
+    <h1></h1>
+    <header>
+      <h1 class="text-5xl text-center mt-16">
+        Let's Get Some <span class="font-semibold text-lime-500">Money</span>!
+      </h1>
+    </header>
+    <!-- TRANSACTION SHEET -->
+    <main class="w-3/4 mx-auto">
+      <div class="grid grid-cols-3 mt-8 gap-4">
+        <div class="bg-lime-500 rounded py-5">
+          <h3 class="text-2xl text-white text-center">Deposit</h3>
+          <h4 class="text-5xl text-white text-center">
+            $<span id="depositTotal">00</span>
+          </h4>
+        </div>
+        <div class="bg-lime-500 rounded py-5">
+          <h3 class="text-2xl text-white text-center">Widraw</h3>
+          <h4 class="text-5xl text-white text-center">
+            $<span id="totalWidraw">00</span>
+          </h4>
+        </div>
+        <div class="bg-lime-500 rounded py-5">
+          <h3 class="text-2xl text-white text-center">Balance</h3>
+          <h4 class="text-5xl text-white text-center">
+            $<span id="totalBalance">00</span>
+          </h4>
+        </div>
+      </div>
+      <!-- DEPOSIT AND WIDRAW -->
+      <section>
+        <div class="grid grid-cols-2 gap-4 mt-6">
+          <div class="bg-lime-500 py-5 rounded">
+            <h2 class="text-3xl mb-3 text-center text-white">Please Deposit</h2>
+            <input
+              id="depositInput"
+              placeholder="deposit ammount"
+              class="border-2 border-gray-400 rounded block w-3/4 px-2 mx-auto py-2"
+              type="text"
+            />
+            <div class="text-center">
+              <button
+                id="depositButton"
+                class="bg-white text-gray-600 font-semibold px-6 py-2 mt-3 rounded"
+              >
+                Deposit
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-lime-500 py-5 rounded">
+            <h2 class="text-3xl mb-3 text-center text-white">Please Widraw</h2>
+            <input
+              id="widrawInput"
+              placeholder="widraw ammount"
+              class="border-2 border-gray-400 rounded block w-3/4 px-2 mx-auto py-2"
+              type="text"
+            />
+            <div class="text-center">
+              <button
+                id="widrawButton"
+                class="bg-white text-gray-600 font-semibold px-6 py-2 mt-3 rounded"
+              >
+                Widraw
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- AMI PRA -->
+    <script src="js/banking.js"></script>
+    <!--<script src="banking.js"></script> -->
+  </body>
+</html>
