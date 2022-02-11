@@ -1,3 +1,8 @@
+function dubbleLait(num) {
+  num = num * 2;
+  return num;
+}
+
 // EVENT LISTENER FOR DEPOSIT BUTTON
 document.getElementById("depositButton").addEventListener("click", function () {
   // GETTING THE INPUT FOR DEPO
