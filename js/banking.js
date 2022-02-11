@@ -8,6 +8,13 @@ function getInputValue(inputId) {
   return amountValue;
 }
 
+// FUCTION TO GET THE TOTAL DEPOSIT
+function getTolatTransAmount(id) {
+  var totalDipo = document.getElementById(id).innerText;
+  var totalDipolInNumber = parseFloat(totalDipo);
+  return totalDipolInNumber;
+}
+
 // EVENT LISTENER FOR DEPOSIT BUTTON
 document.getElementById("depositButton").addEventListener("click", function () {
   // GETTING THE INPUT FOR DEPO
@@ -15,8 +22,10 @@ document.getElementById("depositButton").addEventListener("click", function () {
   // var inputForDepositInNumber = parseFloat(inputForDeposit);
   var inputForDepositInNumber = getInputValue("depositInput");
   // GETTING THE LAST DEPO VALUE
-  var lastDipoTotal = document.getElementById("depositTotal").innerText;
-  var lastDipoTotalInNumber = parseFloat(lastDipoTotal);
+  //   var lastDipoTotal = document.getElementById("depositTotal").innerText;
+  //   var lastDipoTotalInNumber = parseFloat(lastDipoTotal);
+  var lastDipoTotalInNumber = getTolatDepoAmount("depositTotal");
+
   // SETTING THE NEW TOTAL DEPO VALUE
   document.getElementById("depositTotal").innerText =
     inputForDepositInNumber + lastDipoTotalInNumber;
@@ -38,11 +47,13 @@ document.getElementById("widrawButton").addEventListener("click", function () {
   //   var inputForWidrawInNumber = parseFloat(inputForWidraw);
   var inputForWidrawInNumber = getInputValue("widrawInput");
   // GETTING THE LAST WID VALUE
-  var lastWidTotal = document.getElementById("totalWidraw").innerText;
-  var lastWidTotalInNumber = parseFloat(lastWidTotal);
+  //   var lastWidTotal = document.getElementById("totalWidraw").innerText;
+  //   var lastWidTotalInNumber = parseFloat(lastWidTotal);
+  var lastWidTotalInNumber = getTolatTransAmount("totalWidraw");
   // SETTING THE NEW TOTAL WID VALUE
   document.getElementById("totalWidraw").innerText =
     inputForWidrawInNumber + lastWidTotalInNumber;
+
   // GETTING THE LAST TOTAL BALANCE VALUE
   var totalBalance = document.getElementById("totalBalance").innerText;
   var totalBalanceInNumber = parseFloat(totalBalance);
