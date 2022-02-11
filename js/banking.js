@@ -19,11 +19,20 @@ function updateTotalField(inputForTransInNumber, fieldId) {
     lastTotalTransInNumber + inputForTransInNumber;
 }
 
+// GET CURRENT BALANCE
+
+function getCurrentTotalBalance() {
+  var totalBalance = document.getElementById("totalBalance").innerText;
+  var totalBalanceInNumber = parseFloat(totalBalance);
+  return totalBalanceInNumber;
+}
+
 // FUNCTION TO UPDATE THE MAIN BALANCE
 
 function updateTheMainBalance(inputForDepositInNumber, isadd) {
-  var totalBalance = document.getElementById("totalBalance").innerText;
-  var totalBalanceInNumber = parseFloat(totalBalance);
+  // var totalBalance = document.getElementById("totalBalance").innerText;
+  // var totalBalanceInNumber = parseFloat(totalBalance);
+  var totalBalanceInNumber = getCurrentTotalBalance();
   // UPDATING THE NEW TOTAL VALUE
   if (isadd == "add") {
     document.getElementById("totalBalance").innerText =
@@ -62,7 +71,6 @@ document.getElementById("depositButton").addEventListener("click", function () {
     updateTotalField(inputForDepositInNumber, "depositTotal");
     updateTheMainBalance(inputForDepositInNumber, "add");
   }
-
   //     // CLEAR THE INPUT FIELD
   //   document.getElementById("depositInput").value = "";
 });
@@ -88,8 +96,17 @@ document.getElementById("widrawButton").addEventListener("click", function () {
   // // SETTING THE NEW TOTAL VALUE
   // document.getElementById("totalBalance").innerText =
   //   totalBalanceInNumber - inputForWidrawInNumber;
+
   var inputForWidrawInNumber = getInputValue("widrawInput");
-  if (typeof inputForWidrawInNumber == "number" && inputForWidrawInNumber > 0)
+  // var CurrentBal = getCurrentTotalBalance();
+  if (
+    typeof inputForWidrawInNumber == "number" &&
+    inputForWidrawInNumber > 0 &&
+    inputForWidrawInNumber < getCurrentTotalBalance()
+  ) {
     updateTotalField(inputForWidrawInNumber, "totalWidraw");
-  updateTheMainBalance(inputForWidrawInNumber, "minus");
+    updateTheMainBalance(inputForWidrawInNumber, "minus");
+  }
+
+  // console.log(CurrentBal);
 });
