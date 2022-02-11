@@ -3,11 +3,21 @@ function dubbleLait(num) {
   return num;
 }
 
+function getInputValue() {
+  var inputForDeposit = document.getElementById("depositInput").value;
+  var inputForDepositInNumber = parseFloat(inputForDeposit);
+
+  // CLEAR THE INPUT FIELD
+  document.getElementById("depositInput").value = "";
+  return inputForDepositInNumber;
+}
+
 // EVENT LISTENER FOR DEPOSIT BUTTON
 document.getElementById("depositButton").addEventListener("click", function () {
   // GETTING THE INPUT FOR DEPO
-  var inputForDeposit = document.getElementById("depositInput").value;
-  var inputForDepositInNumber = parseFloat(inputForDeposit);
+  // var inputForDeposit = document.getElementById("depositInput").value;
+  // var inputForDepositInNumber = parseFloat(inputForDeposit);
+  var inputForDepositInNumber = getInputValue();
   // GETTING THE LAST DEPO VALUE
   var lastDipoTotal = document.getElementById("depositTotal").innerText;
   var lastDipoTotalInNumber = parseFloat(lastDipoTotal);
@@ -21,7 +31,8 @@ document.getElementById("depositButton").addEventListener("click", function () {
   document.getElementById("totalBalance").innerText =
     totalBalanceInNumber + inputForDepositInNumber;
 
-  document.getElementById("depositInput").value = "";
+  //     // CLEAR THE INPUT FIELD
+  //   document.getElementById("depositInput").value = "";
 });
 
 // EVENT LISTENER FOR Withdraw BUTTON
